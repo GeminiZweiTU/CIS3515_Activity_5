@@ -3,23 +3,21 @@ package edu.temple.inclassuiacvitivity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
 
-class TextSizeAdapter : BaseAdapter() {
+class TextSizeAdapter (private val context: Context, private val items: List<Int>) : BaseAdapter() {
 
-    override fun getCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getCount(): Int = items.size
 
-    override fun getItem(position: Int): Any {
-        TODO("Not yet implemented")
-    }
+    override fun getItem(position: Int): Any = items[position]
 
-    override fun getItemId(position: Int): Long {
-        TODO("Not yet implemented")
-    }
+    override fun getItemId(position: Int): Long = position.toLong()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        TODO("Not yet implemented")
+        val view = (convertView as? TextView)
+            ?: inflator.inflate(android.R.layout.simple_spinner_item,parent, false) as TextView
+        view.text = items[position].toString()
+        return view
     }
 
 }
